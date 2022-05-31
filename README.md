@@ -20,14 +20,8 @@ A Machine Learning - Web app integrated with an android application that utilize
 
 ## Where to learn?
 
-[Kotlin Basics](https://www.youtube.com/watch?v=F9UC9DY-vIU&t=2096s)
+[Android Basics](https://www.youtube.com/watch?v=fis26HvvDII&t=28875s)
 
-[Kotlin Networking](https://www.youtube.com/watch?v=uRwQKikomtE)
-
-[Kotlin Coroutines](https://www.youtube.com/watch?v=2QInrEaXyMo&list=PLSrm9z4zp4mE-o3sPq-PqzGHoFAIsQFI6)
-
-[Firebase](https://www.youtube.com/watch?v=fgdpvwEWJ9M&t=124s)
-
-[Jetpack Compose](https://www.youtube.com/watch?v=ERBEWmfz6h0&list=PLSrm9z4zp4mEWwyiuYgVMWcDFdsebhM-r)
+[Java Networking](https://www.youtube.com/watch?v=xPi-z3nOcn8&t=150s)
 
 [Data Structures](https://www.youtube.com/watch?v=F9UC9DY-vIU&t=2096s)

@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "982000798019",
+    "project_id": "credible-course-finder",
+    "storage_bucket": "credible-course-finder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982000798019:android:6c13f8b4fd7dab091807f6",
+        "android_client_info": {
+          "package_name": "com.example.crediblecoursefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982000798019-u3qk4l5qvmhhl19vaapna77fkc782ops.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG7Luv0HIU8C_OCW_VSW5chRBZUO-BVy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982000798019-u3qk4l5qvmhhl19vaapna77fkc782ops.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982000798019:android:f03e11bee76b01141807f6",
+        "android_client_info": {
+          "package_name": "com.example.crediblecoursefinder_jetpack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982000798019-gvamf3eq01s1kvodi4hs7jcc5v0sem7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crediblecoursefinder_jetpack",
+            "certificate_hash": "581a368f4cf9281abd460b89a5e6cfca1f116a71"
+          }
+        },
+        {
+          "client_id": "982000798019-u3qk4l5qvmhhl19vaapna77fkc782ops.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG7Luv0HIU8C_OCW_VSW5chRBZUO-BVy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982000798019-u3qk4l5qvmhhl19vaapna77fkc782ops.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

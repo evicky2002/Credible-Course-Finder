@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +33,8 @@ public class SignInActivity<GoogleSignInClient> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        getSupportActionBar().hide();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("982000798019-u3qk4l5qvmhhl19vaapna77fkc782ops.apps.googleusercontent.com")
                 .requestEmail()
@@ -37,8 +42,14 @@ public class SignInActivity<GoogleSignInClient> extends AppCompatActivity {
         mGoogleSignInClient = (com.google.android.gms.auth.api.signin.GoogleSignInClient) GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
+        Log.i("TAG","here");
         signInButton = (SignInButton) findViewById(R.id.signInButton);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        Log.i("TAG","here1");
+
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        TextView textView = (TextView) signInButton.getChildAt(0);
+        textView.setText("Log in With Google");
+        findViewById(R.id.signInButton1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();

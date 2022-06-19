@@ -3,8 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/drawable/btv_foreground.xml" value="0.1565" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/drawable/button.xml" value="0.1565" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/drawable/ic_button.xml" value="0.1565" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/drawable/ic_profile.xml" value="0.1345" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/drawable/ic_splash_svg.xml" value="0.1565" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/font/montserrat.xml" value="0.2578125" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/font/montserrat_semibold.xml" value="0.2578125" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/activity_first.xml" value="0.264" />
         <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/activity_main.xml" value="0.176" />
-        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/activity_sign_in.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/fragment_blank.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/fragment_cart.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/layout/fragment_search.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/evick/AndroidStudioProjects/CredibleCourseFinder/app/src/main/res/menu/bottom_navigation_view_menu.xml" value="0.21822916666666667" />
       </map>
     </option>
   </component>

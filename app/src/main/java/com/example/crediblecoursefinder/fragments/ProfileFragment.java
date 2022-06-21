@@ -34,7 +34,6 @@ public class ProfileFragment extends Fragment {
         tvUser = view.findViewById(R.id.tvUser);
         tvEmail = view.findViewById(R.id.tvEmail);
         ivProfile = view.findViewById(R.id.ivProfile);
-        Log.i("FIRSTACTIVITY","hi");
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         String name = currentUser.getDisplayName();
@@ -50,7 +49,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                Log.i("FIRSTACTIVITY","gi");
                 Intent intent = new Intent(getActivity(), SignInActivity.class);
                 startActivity(intent);
             }

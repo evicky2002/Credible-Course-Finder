@@ -42,9 +42,7 @@ public class SignInActivity<GoogleSignInClient> extends AppCompatActivity {
         mGoogleSignInClient = (com.google.android.gms.auth.api.signin.GoogleSignInClient) GoogleSignIn.getClient(this, gso);
 
         mAuth = FirebaseAuth.getInstance();
-        Log.i("TAG","here");
         signInButton = (SignInButton) findViewById(R.id.signInButton);
-        Log.i("TAG","here1");
 
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         TextView textView = (TextView) signInButton.getChildAt(0);
@@ -80,13 +78,11 @@ public class SignInActivity<GoogleSignInClient> extends AppCompatActivity {
                 } catch (ApiException e) {
                     // Google Sign In failed, update UI appropriately
                     Log.w("tag1", "Google sign in failed", e);
-                    Log.i("here","failed");
 
                 }
 
             }else{
                 Log.w("tag", "SignIn Activity", exception);
-                Log.i("here","unf");
 
             }
         }

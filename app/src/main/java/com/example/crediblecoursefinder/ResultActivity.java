@@ -20,15 +20,14 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ResultActivity extends AppCompatActivity {
-    JSONArray result;
-    JSONObject jsonObject;
-    String name="";
+    public String searchKey;
     TextView tvResult;
-    String accesstoken = "Stcf4cFBNRgGJWk3m1HhU4d5oK1uPL73Z2QB0g5l";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,54 +36,23 @@ public class ResultActivity extends AppCompatActivity {
 
         tvResult = (TextView)findViewById(R.id.tvResult);
         Intent intent = getIntent();
-        String searchKey = intent.getStringExtra("SEARCHKEY");
+        searchKey = intent.getStringExtra("SEARCHKEY");
 
-//        RequestQueue queue = Volley.newRequestQueue(this);
-        String endpoint = "https://www.udemy.com/api-2.0/courses/?page_size=90&search=";
-        String url = endpoint+searchKey;
-
-        Log.i("RESULTACTIVITY",url);
-
-// Request a string response from the provided URL.
-        JSONObject parameters = new JSONObject();
-        try {
-            parameters.put("key", "value");
-        } catch (Exception e) {
-        }
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, parameters,new Response.Listener<JSONObject>() {
+        CourseDataService courseDataService = new CourseDataService(ResultActivity.this);
+        courseDataService.getCourses(searchKey, new CourseDataService.VolleyResponseListener() {
             @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    result = response.getJSONArray("results");
-                    for (int i=0;i<result.length();i++){
-                        jsonObject = result.getJSONObject(i);
-                        name += "\n";
-                        name += jsonObject.getString("title");
-                    }
-                    Log.i("RESULTACTIVITY", "hi");
+            public void onError(String message) {
+                Log.i("HELLO", "error");
 
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                tvResult.setText(name);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("RESULTACTIVITY", error.toString());
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<>();
-                // Basic Authentication
-                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
+            public void onResponse(String[] response) {
 
-                headers.put("Authorization", "Bearer " + accesstoken);
-                return headers;
+                Log.i("HELLOBRO", Arrays.deepToString(response));
+
             }
-        };
-        MySingleton.getInstance(this).addToRequestQueue(request);
+        });
+
     }
 }

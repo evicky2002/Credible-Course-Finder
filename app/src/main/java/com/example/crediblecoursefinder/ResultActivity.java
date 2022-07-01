@@ -43,12 +43,10 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onError(String message) {
                 Log.i("HELLO", "error");
-
             }
 
             @Override
             public void onResponse(String[] response) {
-
                 Log.i("HELLOBRO", Arrays.deepToString(response));
 
             }

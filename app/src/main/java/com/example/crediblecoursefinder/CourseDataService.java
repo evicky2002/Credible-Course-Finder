@@ -16,9 +16,12 @@ import java.util.Map;
 public class CourseDataService {
     public static final String ACCESSTOKEN = "Stcf4cFBNRgGJWk3m1HhU4d5oK1uPL73Z2QB0g5l";
     public static final String ENDPOINT = "https://www.udemy.com/api-2.0/courses/?page_size=90&search=";
+    public static final String ENDPOINT_RATING_1 = "https://www.udemy.com/api-2.0/courses/";
+    public static final String ENDPOINT_RATING_2 = "/reviews/?page_size=100";
     JSONArray result;
     JSONObject jsonObject;
     String[] courseTitles;
+    Double[] courseRating;
     Context context;
 
     public CourseDataService(Context context) {
@@ -43,30 +46,26 @@ public class CourseDataService {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    Log.i("COURSE", "in");
 
                     result = response.getJSONArray("results");
-                    Log.i("COURSE", "HEY");
                     courseTitles = new String[result.length()];
+                    courseRating= new Double[result.length()];
 
                     for (int i=0;i<result.length();i++){
                         jsonObject = result.getJSONObject(i);
-                        Log.i("COURSE", jsonObject.getString("title"));
-
                         courseTitles[i] = jsonObject.getString("title");
-                        Log.i("COURSE", i+" : "+courseTitles[i]);
 
                     }
+                    Log.i("COURSEDATA", "test : "+courseRating[0]);
+
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-                Log.i("COURSE","gfjgf");
                 volleyResponseListener.onResponse(courseTitles);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("RESULTACTIVITY", error.toString());
                 volleyResponseListener.onError("error");
             }
         }) {
@@ -78,6 +77,6 @@ public class CourseDataService {
             }
         };
         MySingleton.getInstance(context).addToRequestQueue(request);
-
     }
+
 }

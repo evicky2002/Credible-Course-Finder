@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResultActivity extends AppCompatActivity {
+    int courseCounter = 0;
     public String searchKey;
     TextView tvResult;
     String[] titles;
@@ -75,18 +76,19 @@ public class ResultActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Double courseRating) {
                     ratings.add(courseRating);
+                    courseCounter++;
+
                     Log.i("HELLOBRO", "courseRating : "+courseRating);
+                    if (courseCounter==ids.length){
+                        runMe();
+                    }
 
                 }
             });
         }
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("HELLOBRO", "rating : "+ratings);
-            }
-        },105000);
+    }
+    public void runMe(){
+        Log.i("HELLOBRO", "rating : "+ratings);
 
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +29,10 @@ import java.util.Map;
 public class ResultActivity extends AppCompatActivity {
     public String searchKey;
     TextView tvResult;
+    String[] titles;
+    Integer[] ids;
+    ArrayList<Double> ratings;
+    CourseDataService courseDataService = new CourseDataService(ResultActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,6 @@ public class ResultActivity extends AppCompatActivity {
         tvResult = (TextView)findViewById(R.id.tvResult);
         Intent intent = getIntent();
         searchKey = intent.getStringExtra("SEARCHKEY");
-
-        CourseDataService courseDataService = new CourseDataService(ResultActivity.this);
         courseDataService.getCourses(searchKey, new CourseDataService.VolleyResponseListener() {
             @Override
             public void onError(String message) {
@@ -46,11 +50,43 @@ public class ResultActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(String[] response) {
+            public void onResponse(String[] response, Integer[] id) {
+                titles = response;
+                ids = id;
+                Log.i("HELLOBRO", "stored : "+Arrays.deepToString(titles));
                 Log.i("HELLOBRO", Arrays.deepToString(response));
+                Log.i("HELLOBRO", Arrays.deepToString(id));
+                extra();
 
             }
         });
+
+    }
+    public void extra(){
+        ratings = new ArrayList<>(titles.length);
+        for(int i =0;i<ids.length;i++){
+            courseDataService.getCourseRating(ids[i], new CourseDataService.VolleyRatingListener() {
+                @Override
+                public void onError(String message) {
+                    Log.i("HELLOBRO", "error : here");
+
+                }
+
+                @Override
+                public void onResponse(Double courseRating) {
+                    ratings.add(courseRating);
+                    Log.i("HELLOBRO", "courseRating : "+courseRating);
+
+                }
+            });
+        }
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("HELLOBRO", "rating : "+ratings);
+            }
+        },105000);
 
     }
 }

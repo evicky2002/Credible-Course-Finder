@@ -17,9 +17,10 @@ import java.util.Map;
 
 public class CourseDataService {
     public static final String ACCESSTOKEN = "Stcf4cFBNRgGJWk3m1HhU4d5oK1uPL73Z2QB0g5l";
-    public static final String ENDPOINT = "https://www.udemy.com/api-2.0/courses/?page_size=90&search=";
+    public static final String ENDPOINT = "https://www.udemy.com/api-2.0/courses/?page_size=10&search=";
     public static final String ENDPOINT_RATING_1 = "https://www.udemy.com/api-2.0/courses/";
-    public static final String ENDPOINT_RATING_2 = "/reviews/?page_size=100";
+    public static final String ENDPOINT_RATING_2 = "/reviews/?page_size=210";
+    HashMap<String, Integer> courseInfo = new HashMap<>();
     JSONArray result;
     JSONArray ratingResult;
     JSONObject jsonObject, ratingObject;
@@ -63,6 +64,7 @@ public class CourseDataService {
                         jsonObject = result.getJSONObject(i);
                         courseTitles[i] = jsonObject.getString("title");
                         courseID[i] = Integer.parseInt(jsonObject.getString("id"));
+                        courseInfo.put(jsonObject.getString("title"), Integer.parseInt(jsonObject.getString("id")));
                     }
 
                 }catch (Exception e){

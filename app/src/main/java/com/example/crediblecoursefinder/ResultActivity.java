@@ -1,6 +1,9 @@
 package com.example.crediblecoursefinder;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ResultActivity extends AppCompatActivity {
@@ -31,7 +35,10 @@ public class ResultActivity extends AppCompatActivity {
     public String searchKey;
     TextView tvResult;
     String[] titles;
+    RecyclerView recyclerView;
+    ItemAdapter itemAdapter;
     Integer[] ids;
+    List<CourseViewModel> courses;
     ArrayList<Double> ratings;
     CourseDataService courseDataService = new CourseDataService(ResultActivity.this);
 
@@ -40,8 +47,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         getSupportActionBar().hide();
-
-        tvResult = (TextView)findViewById(R.id.tvResult);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         Intent intent = getIntent();
         searchKey = intent.getStringExtra("SEARCHKEY");
         courseDataService.getCourses(searchKey, new CourseDataService.VolleyResponseListener() {
@@ -65,6 +71,7 @@ public class ResultActivity extends AppCompatActivity {
     }
     public void extra(){
         ratings = new ArrayList<>(titles.length);
+        courses = new ArrayList<>(titles.length);
         for(int i =0;i<ids.length;i++){
             courseDataService.getCourseRating(ids[i], new CourseDataService.VolleyRatingListener() {
                 @Override
@@ -75,9 +82,9 @@ public class ResultActivity extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Double courseRating) {
+                    courses.add(new CourseViewModel(titles[courseCounter],courseRating));
                     ratings.add(courseRating);
                     courseCounter++;
-
                     Log.i("HELLOBRO", "courseRating : "+courseRating);
                     if (courseCounter==ids.length){
                         runMe();
@@ -89,6 +96,10 @@ public class ResultActivity extends AppCompatActivity {
     }
     public void runMe(){
         Log.i("HELLOBRO", "rating : "+ratings);
-
+        Log.i("HELLOBRO", "courses : "+courses.get(0).toString());
+        itemAdapter = new ItemAdapter(courses);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setAdapter(itemAdapter);
     }
 }
